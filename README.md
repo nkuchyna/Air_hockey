@@ -1,9 +1,11 @@
 # Air_hockey
 
 Test task - Air Hockey (C++)
-To build and run:
+<br>
+---------------------------------------------------
+To build and run:<br>
 sh build.sh
 
-Controll:
-MOVEMENTS - arrows
-EXIT - ESC
+Controll:<br>
+MOVEMENTS - arrows<br>
+EXIT - ESC<br>
