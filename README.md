@@ -1,11 +1,14 @@
 # Air_hockey
 
 Test task (C++)
-<br>
 ---------------------------------------------------
-To build and run:<br>
+```
+To build and run:
 sh build.sh
+```
+Controll:
+- MOVEMENTS - arrows
+- EXIT - ESC
+# Notes_app
 
-Controll:<br>
-MOVEMENTS - arrows<br>
-EXIT - ESC<br>
+![](https://github.com/nkuchyna/Air_hockey/blob/master/air_hockey.gif | width=100)
