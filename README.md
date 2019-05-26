@@ -1,6 +1,6 @@
 # Air_hockey
 
-Test task - Air Hockey (C++)
+Test task (C++)
 <br>
 ---------------------------------------------------
 To build and run:<br>
