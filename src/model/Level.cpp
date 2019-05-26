@@ -15,13 +15,14 @@ Level::~Level() {}
 eScreenState    Level::updateScreenStatus()
 {
     if(this->playerPoints >= this->levelMap[currentLevel]
-    && static_cast<eLevels>(this->currentLevel + 1) < LEVEL_NBR)
+    && (static_cast<eLevels>(this->currentLevel + 1)) < LEVEL_NBR)
     {
+        this->currentLevel = static_cast<eLevels>(this->currentLevel + 1);
         SPlayerSDL::shared.playSound(MOVE);
         return NEXT_LEVEL;
     }
     else if(this->playerPoints >= this->levelMap[currentLevel]
-    && static_cast<eLevels>(this->currentLevel + 1) == LEVEL_NBR)
+    && static_cast<eLevels>(this->currentLevel + 1) >= LEVEL_NBR)
     {
         SPlayerSDL::shared.playSound(WIN_SOUND);
         return WIN;

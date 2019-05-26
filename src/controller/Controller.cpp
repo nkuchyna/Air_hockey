@@ -6,9 +6,9 @@ Controller::~Controller() {}
 
 void    Controller::launchGame()
 {
-    const int	FPS = 60;
-	const int	frame_delay = 1000 / FPS;
-	unsigned	frame_start;
+    const int   FPS = 60;
+    const int   frame_delay = 1000 / FPS;
+    unsigned    frame_start;
 
     while(this->game.processRunning())
     {
@@ -35,7 +35,19 @@ void    Controller::launchGame()
             frame_start = SDL_GetTicks();
             processGameInput();
             this->game.executeGameLogic();
-            while(SDL_GetTicks() - frame_start < 1000/FPS);
+            while(SDL_GetTicks() - frame_start < frame_delay);
+        }
+        //next level loop
+        while(this->game.nextLevel())
+        {
+            this->view->drawNextLevel();
+            frame_start = SDL_GetTicks();
+            if(pressAnyKey())
+            {
+                this->game.setScreenState(GAME_RUNNING);
+                this->game.levelManager.refreshLevel();
+            }
+            while(SDL_GetTicks() - frame_start < frame_delay);
         }
         //fail loop
         while(this->game.gameIsFail())
@@ -43,7 +55,7 @@ void    Controller::launchGame()
             SPlayerSDL::shared.stopMusic();
             frame_start = SDL_GetTicks();
             this->view->drawFail();
-            while(SDL_GetTicks() - frame_start < 1000/FPS);
+            while(SDL_GetTicks() - frame_start < frame_delay);
             if(pressESC())
             {
                 this->game.setScreenState(MENU_RUNNING);
@@ -54,9 +66,10 @@ void    Controller::launchGame()
         //win loop
         while(this->game.gameIsWin())
         {
+            SPlayerSDL::shared.stopMusic();
             frame_start = SDL_GetTicks();
             this->view->drawWin();
-            while(SDL_GetTicks() - frame_start < 1000/FPS);
+            while(SDL_GetTicks() - frame_start < frame_delay);
             if(pressAnyKey())
             {
                 this->game.setScreenState(MENU_RUNNING);
@@ -69,7 +82,7 @@ void    Controller::launchGame()
         {
             frame_start = SDL_GetTicks();
             this->view->drawCover();
-            while(SDL_GetTicks() - frame_start < 1000/FPS);
+            while(SDL_GetTicks() - frame_start < frame_delay);
             if(pressAnyKey())
             {
                 this->game.setScreenState(GAME_RUNNING);

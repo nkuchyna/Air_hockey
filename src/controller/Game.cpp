@@ -24,7 +24,7 @@ void    Game::initGameElements()
 void    Game::executeGameLogic()
 {
     this->puck->move();
-    this->enemyLogic();
+    // this->enemyLogic();
     if(!physicsModel.borderCollision(this->myPaddle))
         this->myPaddle->smothMove();
     if(!physicsModel.borderCollision(this->enemyPaddle))
@@ -51,8 +51,9 @@ void    Game::executeGameLogic()
             break;
     }
     //check game status
-    if(levelManager.updateScreenStatus() != GAME_RUNNING)
-        this->screenState = levelManager.updateScreenStatus();
+    eScreenState tmp = this->screenState;
+    if((tmp = levelManager.updateScreenStatus()) != GAME_RUNNING)
+        this->screenState = tmp;
 }
 
 void    Game::refreshGame()
@@ -128,7 +129,7 @@ void    Game::updateMenuAction(eKeys key)
             break;
         case  Menu::REFRESH_GAME :
             refreshGame();
-            levelManager.refreshLevel();
+            levelManager.refreshGame();
             this->screenState = GAME_RUNNING;
             std::cout << "REFRESH GAME" << std::endl;
             break;
