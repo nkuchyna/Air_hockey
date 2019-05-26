@@ -11,4 +11,4 @@ Controll:
 - EXIT - ESC
 # Notes_app
 
-<img align="left" width="500" src="https://github.com/nkuchyna/Air_hockey/blob/master/air_hockey.gif">
+<img align="left" width="250" src="https://github.com/nkuchyna/Air_hockey/blob/master/air_hockey.gif">
