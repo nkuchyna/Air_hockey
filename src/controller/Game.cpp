@@ -24,7 +24,7 @@ void    Game::initGameElements()
 void    Game::executeGameLogic()
 {
     this->puck->move();
-    // this->enemyLogic();
+    this->enemyLogic();
     if(!physicsModel.borderCollision(this->myPaddle))
         this->myPaddle->smothMove();
     if(!physicsModel.borderCollision(this->enemyPaddle))
